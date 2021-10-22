@@ -5,10 +5,6 @@ const jwt = require("jsonwebtoken");
 
 //스키마를 만들었다. 체계?
 const userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    maxlength: 12,
-  },
   email: {
     type: String,
     trim: true,
@@ -18,9 +14,14 @@ const userSchema = mongoose.Schema({
     type: String,
     minlength: 6,
   },
-  lastname: {
+  name: {
     type: String,
     maxlength: 12,
+  },
+  nickname: {
+    type: String,
+    maxlength: 12,
+    unique: 1,
   },
   role: {
     type: Number,
