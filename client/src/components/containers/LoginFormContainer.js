@@ -1,13 +1,13 @@
 import React from "react";
-import LoginPage from "../views/LoginPage/LoginPage";
+import LoginForm from "../views/LandingPage/LoginForm";
 import { useDispatch } from "react-redux";
 import { login } from "../../modules/account.js";
 import { withRouter } from "react-router-dom";
 
-const LoginPageContainer = (props) => {
+const LoginFormContainer = (props) => {
   const dispatch = useDispatch();
   const handleLogin = (account) => dispatch(login(account));
-  return <LoginPage handleLogin={handleLogin} props={props} />;
+  return <LoginForm handleLogin={handleLogin} props={props} />;
 };
 
-export default withRouter(LoginPageContainer);
+export default withRouter(LoginFormContainer);

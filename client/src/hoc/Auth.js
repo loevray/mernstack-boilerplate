@@ -13,17 +13,17 @@ export default function (SpecificComponent, option, adminRoute = null) {
     useEffect(() => {
       dispatch(auth()).then((response) => {
         console.log(response);
+        //인증 안되었을때
         if (!response.payload.isAuth) {
+          //로그인한 유저만 출입 가능
           if (option) {
-            props.history.push("/login");
-          }
-        } else {
-          if (adminRoute && !response.payload.isAdmin) {
             props.history.push("/");
-          } else {
-            if (!option) {
-              props.history.push("/");
-            }
+          }
+        }
+        //인증 되었을때
+        else {
+          if (!option) {
+            props.history.push("/home");
           }
         }
       });

@@ -1,16 +1,13 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
+import LoginFormContainer from "../../containers/LoginFormContainer";
+import RegisterFormContainer from "../../containers/RegisterFormContainer";
 
 const LandingPage = (props) => {
-  const onClick = () => {
-    axios.get("/api/users/logout").then((response) => {
-      if (response.data.success) {
-        props.history.push("/login");
-      } else {
-        alert("로그아웃 실패");
-      }
-    });
+  const [registerClick, setRegisterClick] = useState(false);
+  const onToggleLogin = () => {
+    setRegisterClick((prev) => !prev);
   };
   return (
     <div
@@ -24,7 +21,10 @@ const LandingPage = (props) => {
       }}
     >
       <h2>시작 페이지</h2>
-      <button onClick={onClick}>로그아웃</button>
+      {registerClick ? <RegisterFormContainer /> : <LoginFormContainer />}
+      <button onClick={onToggleLogin}>
+        {registerClick ? "로그인" : "가입하기"}
+      </button>
     </div>
   );
 };

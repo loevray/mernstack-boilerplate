@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import RegisterPage from "../views/RegisterPage/RegisterPage";
 import { register } from "../../modules/account";
 import { withRouter } from "react-router-dom";
+import RegisterForm from "../views/LandingPage/RegisterForm";
 
-const RegisterPageContainer = (props) => {
+const RegisterFormContainer = (props) => {
   const dispatch = useDispatch();
   const handleRegister = (account) => dispatch(register(account));
-  return <RegisterPage handleRegister={handleRegister} props={props} />;
+  return <RegisterForm handleRegister={handleRegister} props={props} />;
 };
 
-export default withRouter(RegisterPageContainer);
+export default withRouter(RegisterFormContainer);

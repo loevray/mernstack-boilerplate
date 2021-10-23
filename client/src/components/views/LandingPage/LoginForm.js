@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const LoginPage = ({ handleLogin, props }) => {
+const LoginForm = ({ handleLogin, props }) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -21,7 +21,7 @@ const LoginPage = ({ handleLogin, props }) => {
     };
     handleLogin(account).then((response) => {
       if (response.payload.loginSuccess) {
-        props.history.push("/");
+        props.history.push("/home");
       } else {
         alert("로그인 에러");
       }
@@ -42,13 +42,20 @@ const LoginPage = ({ handleLogin, props }) => {
         onSubmit={onSubmit}
       >
         <label>Email</label>
-        <input name="email" type="email" value={email} onChange={onChange} />
+        <input
+          name="email"
+          type="email"
+          value={email}
+          onChange={onChange}
+          required
+        />
         <label>Password</label>
         <input
           name="password"
           type="password"
           value={password}
           onChange={onChange}
+          required
         />
         <br />
         <button>Login</button>
@@ -57,4 +64,4 @@ const LoginPage = ({ handleLogin, props }) => {
   );
 };
 
-export default LoginPage;
+export default LoginForm;

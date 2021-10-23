@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-const RegisterPage = ({ props, handleRegister }) => {
+const RegisterForm = ({ props, handleRegister }) => {
   const [inputs, setInputs] = useState({
     email: "",
     name: "",
+    nickname: "",
     password: "",
     confirmPassword: "",
   });
-  const { email, name, password, confirmPassword } = inputs;
+  const { email, name, nickname, password, confirmPassword } = inputs;
   const onChange = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -49,15 +50,36 @@ const RegisterPage = ({ props, handleRegister }) => {
         onSubmit={onSubmit}
       >
         <label>Email</label>
-        <input name="email" type="email" value={email} onChange={onChange} />
+        <input
+          name="email"
+          type="email"
+          value={email}
+          onChange={onChange}
+          required
+        />
         <label>Name</label>
-        <input name="name" type="text" value={name} onChange={onChange} />
+        <input
+          name="name"
+          type="text"
+          value={name}
+          onChange={onChange}
+          required
+        />
+        <label>NickName</label>
+        <input
+          name="nickname"
+          type="text"
+          value={nickname}
+          onChange={onChange}
+          required
+        />
         <label>Password</label>
         <input
           name="password"
           type="password"
           value={password}
           onChange={onChange}
+          required
         />
         <label>Confirm password</label>
         <input
@@ -65,6 +87,7 @@ const RegisterPage = ({ props, handleRegister }) => {
           type="password"
           value={confirmPassword}
           onChange={onChange}
+          required
         />
         <br />
         <button type="submit">회원 가입</button>
@@ -73,4 +96,4 @@ const RegisterPage = ({ props, handleRegister }) => {
   );
 };
 
-export default RegisterPage;
+export default RegisterForm;
